@@ -10,4 +10,8 @@ class Flavor extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function product() {
+        return $this->hasOne(Product::class);
+    }
 }
