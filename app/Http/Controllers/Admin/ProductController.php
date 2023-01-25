@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->get();
-        return view('products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     public function create()
@@ -24,7 +24,7 @@ class ProductController extends Controller
         $types   = Type::all();
         $flavors = Flavor::all();
 
-        return view('products.create', compact('product', 'types', 'flavors'));
+        return view('admin.products.create', compact('product', 'types', 'flavors'));
     }
 
     public function store(StoreProduct $request)
@@ -39,7 +39,7 @@ class ProductController extends Controller
         $types   = Type::all();
         $flavors = Flavor::all();
 
-        return view('products.edit', compact('product', 'types', 'flavors'));
+        return view('admin.products.edit', compact('product', 'types', 'flavors'));
     }
 
     public function update(UpdateProduct $request, Product $product)

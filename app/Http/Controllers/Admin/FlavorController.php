@@ -12,12 +12,12 @@ class FlavorController extends Controller
     public function index()
     {
         $flavors = Flavor::latest()->get();
-        return view('flavors.index', compact('flavors'));
+        return view('admin.flavors.index', compact('flavors'));
     }
 
     public function create()
     {
-        return view('flavors.create');
+        return view('admin.flavors.create');
     }
 
     public function store(Request $request)
@@ -33,7 +33,7 @@ class FlavorController extends Controller
 
     public function edit(Flavor $flavor)
     {
-        return view('flavors.edit', compact('flavor'));
+        return view('admin.flavors.edit', compact('flavor'));
     }
 
     public function update(Request $request, Flavor $flavor)

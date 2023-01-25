@@ -12,14 +12,14 @@ class SaleController extends Controller
     public function index()
     {
         $sales = Sale::with('product')->latest()->get();
-        return view('sales.index', compact('sales'));
+        return view('admin.sales.index', compact('sales'));
     }
 
     public function create()
     {
         $sale     = new Sale();
         $products = Product::latest()->get();
-        return view('sales.create', compact('sale', 'products'));
+        return view('admin.sales.create', compact('sale', 'products'));
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class SaleController extends Controller
     public function edit(Sale $sale)
     {
         $products = Product::latest()->get();
-        return view('sales.edit', compact('sale', 'products'));
+        return view('admin.sales.edit', compact('sale', 'products'));
     }
 
     public function update(Request $request, Sale $sale)
