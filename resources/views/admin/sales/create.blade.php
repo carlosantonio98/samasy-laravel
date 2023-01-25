@@ -15,7 +15,7 @@
 
                     <div class="flex flex-col mb-4">
                         <label for="product_id" class="mb-2">Product</label>
-                        <select name="product_id" class="py-2 px-3 rounded-lg bg-gray-100">
+                        <select name="product_id" class="py-2 px-3 rounded-lg bg-gray-100" autofocus>
                             @foreach ($products as $product)
                                 <option value="{{ $product->id }}" {{ ($product->id == $sale->product_id) ? 'Selected':'' }}>{{ $product->name }}</option>
                             @endforeach

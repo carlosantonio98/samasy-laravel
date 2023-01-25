@@ -15,7 +15,7 @@
         
                     <div class="flex flex-col mb-4">
                         <label for="name" class="mb-2">Name of type</label>
-                        <input type="text" name="name" id="name" placeholder="Insert the type" class="py-2 px-3 rounded-lg bg-gray-100" value="{{ old('name') }}">
+                        <input type="text" name="name" id="name" placeholder="Insert the type" class="py-2 px-3 rounded-lg bg-gray-100" value="{{ old('name') }}" autofocus>
                         
                         @error('name')
                             <span class="text-red-500">{{ $message }}</span>
