@@ -15,6 +15,7 @@
                     <tr>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">ID</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">PRODUCT</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">PRICE</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">TYPE</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">FLAVOR</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">CREATED AT</th>
@@ -27,6 +28,7 @@
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">{{ $sale->id }}</td>
                             <td class="px-6 py-4">{{ $sale->product->name }}</td>
+                            <td class="px-6 py-4">{{ $sale->product->price }}</td>
                             <td class="px-6 py-4">{{ $sale->product->type->name }}</td>
                             <td class="px-6 py-4">{{ $sale->product->flavor->name }}</td>
                             <td class="px-6 py-4">{{ $sale->created_at->format('d/m/Y') }}</td>
@@ -38,7 +40,7 @@
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td colspan="4" class="px-6 py-4">Sin registros</td>
+                            <td colspan="7" class="px-6 py-4">Sin registros</td>
                         </tr>
                     @endforelse
 
