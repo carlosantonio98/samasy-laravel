@@ -49,4 +49,15 @@ class SaleController extends Controller
 
         return redirect()->route('admin.sales.edit', $sale);
     }
+
+    public function registerByQr(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required'
+        ]);
+
+        Sale::create( $request->all() );
+
+        return response('Success', 201);
+    }
 }

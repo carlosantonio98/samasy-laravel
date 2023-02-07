@@ -18,6 +18,7 @@
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">PRICE</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">FLAVOR</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">TYPE</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">QR</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">CREATED AT</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                     </tr>
@@ -31,6 +32,7 @@
                             <td class="px-6 py-4">{{ $product->price }}</td>
                             <td class="px-6 py-4">{{ $product->flavor->name }}</td>
                             <td class="px-6 py-4">{{ $product->type->name }}</td>
+                            <td class="px-6 py-4"><a href="{{ asset('qrcodes/' . $product->qr_code) }}" download><img class="w-[50px] h-[50px]" src="{{ asset('qrcodes/' . $product->qr_code) }}" alt="qrcode"></a></td>
                             <td class="px-6 py-4">{{ $product->created_at->format('d/m/Y') }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
@@ -47,7 +49,7 @@
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td colspan="7" class="px-6 py-4">Sin registros</td>
+                            <td colspan="8" class="px-6 py-4">Sin registros</td>
                         </tr>
                     @endforelse
 
