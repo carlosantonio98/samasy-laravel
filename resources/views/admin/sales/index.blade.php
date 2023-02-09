@@ -35,6 +35,13 @@
                             <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
                                     <a class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.sales.edit', $sale) }}"><i class="fa-solid fa-edit"></i></a>
+
+                                    <form action="{{ route('admin.sales.destroy', $sale) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                
+                                        <button type="submit" class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.sales.destroy', $sale) }}"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
