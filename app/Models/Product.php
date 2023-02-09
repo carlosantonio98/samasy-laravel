@@ -23,4 +23,8 @@ class Product extends Model
         return $this->hasMany(Sale::class);
     }
 
+    public function stocks() {
+        return $this->hasOne(Stock::class);
+    }
+
 }

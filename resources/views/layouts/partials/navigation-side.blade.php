@@ -66,6 +66,14 @@
                             <span class="ml-3 flex-1 whitespace-nowrap">Sales</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.stocks.index')}}" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                            <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 7h11v2H4zm0 4h11v2H4zm0 4h7v2H4zm15.299-2.708-4.3 4.291-1.292-1.291-1.414 1.415 2.706 2.704 5.712-5.703z"></path>
+                            </svg>
+                            <span class="ml-3 flex-1 whitespace-nowrap">Stock</span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="space-y-2 pt-2">
                     <a href="#" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
