@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <div class="container mx-auto">
         
         <div class="flex justify-between items-center mb-5">
@@ -146,132 +144,130 @@
         </div>
 
     </div>
-@endsection
+</x-app-layout>
 
-@section('js')
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
 
-        const chartOneDatas = {!! $chartOne !!};
-        
-        const chartOneOptions = {
-            chart: {
-                type: 'line',
-                height: 300
-            },
-            series: [ chartOneDatas.series ],
-            xaxis: {
-                categories: chartOneDatas.categories
-            }
+    const chartOneDatas = {!! $chartOne !!};
+    
+    const chartOneOptions = {
+        chart: {
+            type: 'line',
+            height: 300
+        },
+        series: [ chartOneDatas.series ],
+        xaxis: {
+            categories: chartOneDatas.categories
         }
+    }
 
-        const chartOne = new ApexCharts(document.querySelector("#chartOne"), chartOneOptions);
+    const chartOne = new ApexCharts(document.querySelector("#chartOne"), chartOneOptions);
 
-        chartOne.render();
-
-
-        
+    chartOne.render();
 
 
+    
 
 
-        const chartTwoDatas = {!! $chartTwo !!};
 
-        const chartTwoOptions = {
-            series: chartTwoDatas.series,
-            chart: {
-                type: 'donut',
-                labels: false,
-            },
-            responsive: [
-                {
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                            width: 200
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
+
+    const chartTwoDatas = {!! $chartTwo !!};
+
+    const chartTwoOptions = {
+        series: chartTwoDatas.series,
+        chart: {
+            type: 'donut',
+            labels: false,
+        },
+        responsive: [
+            {
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
                     }
                 }
-            ],
-            labels: chartTwoDatas.labels,
-            dataLabels: {
-                enabled: false
-            },
-        };
+            }
+        ],
+        labels: chartTwoDatas.labels,
+        dataLabels: {
+            enabled: false
+        },
+    };
 
-        const chartTwo = new ApexCharts(document.querySelector("#chartTwo"), chartTwoOptions);
-        chartTwo.render();
-
-
-
+    const chartTwo = new ApexCharts(document.querySelector("#chartTwo"), chartTwoOptions);
+    chartTwo.render();
 
 
-        const chartThreeOptions = {
-            series: [70],
-            chart: {
-                type: 'radialBar'
-            },
-            plotOptions: {
-                radialBar: {
-                    
-                    hollow: {
-                        size: '50%',
-                    },
-                    dataLabels: {
-                        name: {
-                            show: false
-                        },
-                        value: {
-                            show: false
-                        }
-                    }
+
+
+
+    const chartThreeOptions = {
+        series: [70],
+        chart: {
+            type: 'radialBar'
+        },
+        plotOptions: {
+            radialBar: {
+                
+                hollow: {
+                    size: '50%',
                 },
-            },
-            stroke: {
-                lineCap: 'round'
-            },
-            colors: [ '#3798A6' ],
-        };
-
-        const chartThree = new ApexCharts(document.querySelector("#chartThree"), chartThreeOptions);
-        chartThree.render();
-        
-        
-        
-        
-        
-        const chartFourOptions = {
-            series: [40],
-            chart: {
-                type: 'radialBar',
-            },
-            plotOptions: {
-                radialBar: {
-                    hollow: {
-                        size: '50%',
+                dataLabels: {
+                    name: {
+                        show: false
                     },
-                    dataLabels: {
-                        name: {
-                            show: false
-                        },
-                        value: {
-                            show: false
-                        }
+                    value: {
+                        show: false
                     }
+                }
+            },
+        },
+        stroke: {
+            lineCap: 'round'
+        },
+        colors: [ '#3798A6' ],
+    };
+
+    const chartThree = new ApexCharts(document.querySelector("#chartThree"), chartThreeOptions);
+    chartThree.render();
+    
+    
+    
+    
+    
+    const chartFourOptions = {
+        series: [40],
+        chart: {
+            type: 'radialBar',
+        },
+        plotOptions: {
+            radialBar: {
+                hollow: {
+                    size: '50%',
                 },
+                dataLabels: {
+                    name: {
+                        show: false
+                    },
+                    value: {
+                        show: false
+                    }
+                }
             },
-            stroke: {
-                lineCap: 'round'
-            },
-        };
+        },
+        stroke: {
+            lineCap: 'round'
+        },
+    };
 
-        const chartFour = new ApexCharts(document.querySelector("#chartFour"), chartFourOptions);
-        chartFour.render();
+    const chartFour = new ApexCharts(document.querySelector("#chartFour"), chartFourOptions);
+    chartFour.render();
 
 
-      
-    </script>
-@endsection
+    
+</script>
