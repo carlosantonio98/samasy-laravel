@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:admin.users.index')->only('index');
+        $this->middleware('can:admin.users.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.users.create
+        $this->middleware('can:admin.users.edit')->only('edit', 'update');
+        $this->middleware('can:admin.users.destroy')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +40,9 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('admin.users.create', compact('user'));
+        $roles = Role::all();
+
+        return view('admin.users.create', compact('user', 'roles'));
     }
 
     /**
@@ -53,6 +65,9 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Asignamos el rol
+        $user->roles()->sync($request->roles);
+
         return redirect()->route('admin.users.edit', $user);
     }
 
@@ -65,7 +80,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -80,14 +96,16 @@ class UserController extends Controller
         $request->validate([
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
-            'password' => ['confirmed', Password::defaults()]
+            'password' => ['confirmed']
         ]);
 
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password ? Hash::make($request->password) : $user->password,
         ]);
+
+        $user->roles()->sync($request->roles);
 
         return redirect()->route('admin.users.edit', $user);
     }

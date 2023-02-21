@@ -33,3 +33,18 @@
         <span class="text-red-500">{{ $message }}</span>
     @enderror
 </div>
+
+<h2 class="h3 mb-2">Role list</h2>
+
+<div class="mb-4">
+    @if ($roles->isEmpty())
+        <p class="py-2 px-3 rounded-lg bg-orange-100 ">No roles</p>
+    @endIf
+
+    @foreach ($roles as $role)
+        <label>
+            <input type="checkbox" name="roles[]" value="{{ $role->id }}" class="mr-2" {{ ($user->roles->contains('id', $role->id)) ? 'checked':'' }}>
+            {{ $role->name }}
+        </label>
+    @endforeach
+</div>

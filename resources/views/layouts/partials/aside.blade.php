@@ -52,15 +52,6 @@
 
                     <!--===== Item =====-->
                     <li>
-                        <x-aside-link label="Users" route="admin.users.index">
-                            <x-slot name="svgpath">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </x-slot>
-                        </x-aside-link>
-                    </li>
-
-                    <!--===== Item =====-->
-                    <li>
                         <x-aside-link label="Products" route="admin.products.index">
                             <x-slot name="svgpath">
                                 <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
@@ -72,7 +63,7 @@
                     <li>
                         <x-aside-link label="Sales" route="admin.sales.index">
                             <x-slot name="svgpath">
-                                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                                <path d="M3 4v5h2V5h4V3H4a1 1 0 0 0-1 1zm18 5V4a1 1 0 0 0-1-1h-5v2h4v4h2zm-2 10h-4v2h5a1 1 0 0 0 1-1v-5h-2v4zM9 21v-2H5v-4H3v5a1 1 0 0 0 1 1h5zM2 11h20v2H2z"></path>
                             </x-slot>
                         </x-aside-link>
                     </li>
@@ -85,6 +76,39 @@
                             </x-slot>
                         </x-aside-link>
                     </li>
+
+                    @can('admin.users.index')
+                        <!--===== Item =====-->
+                        <li>
+                            <x-aside-link label="Users" route="admin.users.index">
+                                <x-slot name="svgpath">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                                </x-slot>
+                            </x-aside-link>
+                        </li>
+                    @endcan
+                    
+                    @can('admin.roles.index')
+                        <!--===== Item =====-->
+                        <li>
+                            <x-aside-link label="Roles" route="admin.roles.index">
+                                <x-slot name="svgpath">
+                                    <path d="M9.5 12c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm1.5 1H8c-3.309 0-6 2.691-6 6v1h15v-1c0-3.309-2.691-6-6-6z"></path><path d="M16.604 11.048a5.67 5.67 0 0 0 .751-3.44c-.179-1.784-1.175-3.361-2.803-4.44l-1.105 1.666c1.119.742 1.8 1.799 1.918 2.974a3.693 3.693 0 0 1-1.072 2.986l-1.192 1.192 1.618.475C18.951 13.701 19 17.957 19 18h2c0-1.789-.956-5.285-4.396-6.952z"></path>
+                                </x-slot>
+                            </x-aside-link>
+                        </li>
+                    @endcan
+                        
+                    @can('admin.permissions.index')
+                        <!--===== Item =====-->
+                        <li>
+                            <x-aside-link label="Permissions" route="admin.permissions.index">
+                                <x-slot name="svgpath">
+                                    <path d="M9.5 12c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm1.5 1H8c-3.309 0-6 2.691-6 6v1h15v-1c0-3.309-2.691-6-6-6z"></path><path d="M16.604 11.048a5.67 5.67 0 0 0 .751-3.44c-.179-1.784-1.175-3.361-2.803-4.44l-1.105 1.666c1.119.742 1.8 1.799 1.918 2.974a3.693 3.693 0 0 1-1.072 2.986l-1.192 1.192 1.618.475C18.951 13.701 19 17.957 19 18h2c0-1.789-.956-5.285-4.396-6.952z"></path>
+                                </x-slot>
+                            </x-aside-link>
+                        </li>
+                    @endcan
 
                 </ul>
 
