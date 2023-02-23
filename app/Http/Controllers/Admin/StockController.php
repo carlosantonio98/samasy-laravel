@@ -11,6 +11,15 @@ use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:admin.stocks.index')->only('index');
+        $this->middleware('can:admin.stocks.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.stocks.create
+        $this->middleware('can:admin.stocks.edit')->only('edit', 'update');
+        $this->middleware('can:admin.stocks.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $stocks = Stock::with('product')->latest()->get();

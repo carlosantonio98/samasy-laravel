@@ -10,6 +10,15 @@ use App\Models\Stock;
 
 class SaleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:admin.sales.index')->only('index');
+        $this->middleware('can:admin.sales.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.sales.create
+        $this->middleware('can:admin.sales.edit')->only('edit', 'update');
+        $this->middleware('can:admin.sales.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $sales = Sale::with('product')->latest()->get();

@@ -9,6 +9,14 @@ use App\Http\Controllers\Controller;
 class TypeController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('can:admin.types.index')->only('index');
+        $this->middleware('can:admin.types.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.types.create
+        $this->middleware('can:admin.types.edit')->only('edit', 'update');
+        $this->middleware('can:admin.types.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $types = Type::latest()->get();

@@ -12,6 +12,15 @@ use App\Models\Type;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:admin.products.index')->only('index');
+        $this->middleware('can:admin.products.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.products.create
+        $this->middleware('can:admin.products.edit')->only('edit', 'update');
+        $this->middleware('can:admin.products.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $products = Product::latest()->get();

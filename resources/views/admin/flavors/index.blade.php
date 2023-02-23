@@ -26,14 +26,20 @@
                             <td class="px-6 py-4">{{ $flavor->created_at->format('d/m/Y') }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
-                                    <a class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.flavors.edit', $flavor) }}"><i class="fa-solid fa-edit"></i></a>
+
+                                    @can('admin.flavors.edit')
+                                        <a class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.flavors.edit', $flavor) }}"><i class="fa-solid fa-edit"></i></a>
+                                    @endcan
                 
-                                    <form action="{{ route('admin.flavors.destroy', $flavor) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                
-                                        <button type="submit" class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.flavors.destroy', $flavor) }}"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
+                                    @can('admin.flavors.destroy')
+                                        <form action="{{ route('admin.flavors.destroy', $flavor) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                    
+                                            <button type="submit" class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.flavors.destroy', $flavor) }}"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    @endcan
+
                                 </div>
                             </td>
                         </tr>

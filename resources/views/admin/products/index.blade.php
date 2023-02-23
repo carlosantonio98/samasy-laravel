@@ -34,14 +34,20 @@
                             <td class="px-6 py-4">{{ $product->created_at->format('d/m/Y') }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-end gap-4">
-                                    <a class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.products.edit', $product) }}"><i class="fa-solid fa-edit"></i></a>
-                
-                                    <form action="{{ route('admin.products.destroy', $product) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                
-                                        <button type="submit" class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.products.destroy', $product) }}"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
+
+                                    @can('admin.products.edit')
+                                        <a class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.products.edit', $product) }}"><i class="fa-solid fa-edit"></i></a>
+                                    @endcan
+                                    
+                                    @can('admin.products.destroy')
+                                        <form action="{{ route('admin.products.destroy', $product) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                    
+                                            <button type="submit" class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.products.destroy', $product) }}"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    @endcan
+
                                 </div>
                             </td>
                         </tr>

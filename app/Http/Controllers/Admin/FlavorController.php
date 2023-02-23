@@ -9,6 +9,14 @@ use App\Models\Flavor;
 class FlavorController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('can:admin.flavors.index')->only('index');
+        $this->middleware('can:admin.flavors.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.flavors.create
+        $this->middleware('can:admin.flavors.edit')->only('edit', 'update');
+        $this->middleware('can:admin.flavors.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $flavors = Flavor::latest()->get();
