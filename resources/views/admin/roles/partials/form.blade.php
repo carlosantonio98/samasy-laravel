@@ -14,10 +14,12 @@
         <p class="py-2 px-3 rounded-lg bg-orange-100 ">No permissions</p>
     @endIf
 
-    @foreach ($permissions as $permission)
-        <label>
-            <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="mr-2" {{ ($role->permissions->contains('id', $permission->id)) ? 'checked':'' }}>
-            {{ $permission->description }}
-        </label>
-    @endforeach
+    <ul class="grid md:grid-cols-2 lg:grid-cols-3">
+        @foreach ($permissions as $permission)
+            <li>
+                <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="mr-2" {{ ($role->permissions->contains('id', $permission->id)) ? 'checked':'' }}>
+                {{ $permission->description }}
+            </li>
+        @endforeach
+    </ul>
 </div>
