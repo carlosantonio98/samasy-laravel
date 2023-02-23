@@ -27,7 +27,7 @@ class StockController extends Controller
 
     public function store(StoreStock $request)
     {
-        $stock = Stock::create($request->all());
+        $stock = Stock::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
         return redirect()->route('admin.stocks.edit', $stock);
     }
 

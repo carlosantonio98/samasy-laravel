@@ -26,7 +26,7 @@ class FlavorController extends Controller
             'name' => 'required|unique:flavors'
         ]);
 
-        $flavor = Flavor::create( $request->all() );
+        $flavor = Flavor::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
 
         return redirect()->route('admin.flavors.edit', $flavor);
     }

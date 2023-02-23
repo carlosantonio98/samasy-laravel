@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'type_id', 'flavor_id', 'qr_code'];
+    protected $fillable = ['name', 'price', 'type_id', 'flavor_id', 'qr_code', 'user_id'];
 
     public function type() {
         return $this->belongsTo(Type::class);
@@ -25,6 +25,10 @@ class Product extends Model
 
     public function stocks() {
         return $this->hasOne(Stock::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
 }

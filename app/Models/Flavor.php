@@ -9,9 +9,13 @@ class Flavor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'user_id'];
 
     public function product() {
         return $this->hasOne(Product::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

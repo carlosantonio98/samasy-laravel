@@ -38,7 +38,7 @@ class SaleController extends Controller
         $stock = Stock::where('product_id', $request['product_id'])->where('amount', '>=', 1)->first();
 
         if ($stock) {
-            $sale = Sale::create( $request->all() );
+            $sale = Sale::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
             $stock->update([ 'amount' => $stock->amount - 1 ]);
             
             return redirect()->route('admin.sales.edit', $sale);

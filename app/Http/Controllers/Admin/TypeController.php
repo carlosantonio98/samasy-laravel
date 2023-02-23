@@ -25,8 +25,8 @@ class TypeController extends Controller
         $request->validate([
             'name' => 'required|unique:types'
         ]);
-
-        $type = Type::create( $request->all() );
+        
+        $type = Type::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
 
         return redirect()->route('admin.types.edit', $type);
     }

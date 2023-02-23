@@ -29,7 +29,7 @@ class ProductController extends Controller
 
     public function store(StoreProduct $request)
     {
-        $product = Product::create( $request->all() );
+        $product = Product::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
         return redirect()->route('admin.products.edit', $product);
     }
 
