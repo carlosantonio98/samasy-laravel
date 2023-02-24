@@ -3,7 +3,10 @@
         
         <div class="flex justify-between items-center mb-5">
             <h3 class="font-bold text-lg py-4">Types list</h3>
-            <a href="{{ route('admin.types.create') }}" class="p-2 rounded-lg font-medium text-gray-200 bg-blue-700 hover:bg-blue-500">Add New</a>
+
+            @can('admin.types.create')
+                <a href="{{ route('admin.types.create') }}" class="p-2 rounded-lg font-medium text-gray-200 bg-blue-700 hover:bg-blue-500">Add New</a>
+            @endcan
         </div>
           
         <!-- component -->
