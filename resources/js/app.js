@@ -11,12 +11,16 @@ const sidebarBackdrop = document.querySelector('#sidebarBackdrop');
 const sidebar = document.querySelector('#sidebar');
 const toggleSidebarMobile = document.querySelector('#toggleSidebarMobile');
 
-toggleSidebarMobile.addEventListener('click', () => {
-    sidebarBackdrop.classList.toggle('hidden');
-    sidebar.classList.toggle('hidden');
-});
+if ( toggleSidebarMobile ) {
+    toggleSidebarMobile.addEventListener('click', () => {
+        sidebarBackdrop.classList.toggle('hidden');
+        sidebar.classList.toggle('hidden');
+    });
+}
 
-sidebarBackdrop.addEventListener('click', (event) => {
-    event.target.classList.add('hidden');
-    sidebar.classList.add('hidden');
-});
+if ( sidebarBackdrop ) {
+    sidebarBackdrop.addEventListener('click', (event) => {
+        event.target.classList.add('hidden');
+        sidebar.classList.add('hidden');
+    });
+}
