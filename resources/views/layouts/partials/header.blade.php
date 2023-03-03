@@ -20,7 +20,7 @@
 
                 <!--===== Logo =====-->
                 <a href="{{ route('admin.home') }}" class="text-xl font-bold flex items-center lg:ml-2.5">
-                    <img src="https://demo.themesberg.com/windster/images/logo.svg" class="h-6 mr-2" alt="Logo">
+                    <x-application-logo class="mr-2 fill-current text-[#3798a6]" />
                     <span class="self-center whitespace-nowrap">{{ env('APP_NAME') }}</span>
                 </a>
 
