@@ -63,19 +63,18 @@ class HomeController extends Controller
 
         $amountSales      = $amountSales->count();
         $amountSalesByDay = $amountSalesByDay->count();
-        $totalMoney       = $totalMoney->get()[0]->total_money;
+        $totalMoney       = number_format($totalMoney->get()[0]->total_money, 2);
         $monthMoney       = $monthMoney->groupby('date_month')->get();
         $dayMoney         = $dayMoney->groupby('date_day')->get();
         $sales            = $sales->get();
 
-        $monthMoney = $monthMoney->count() > 0 ? $monthMoney[0]->month_money : 0;
-        $dayMoney   = $dayMoney->count() > 0 ? $dayMoney[0]->day_money : 0;
+        $monthMoney = number_format($monthMoney[0]->month_money ?? 0, 2);
+        $dayMoney   = number_format($dayMoney[0]->day_money ?? 0, 2);
 
         $chartOne = $this->getDataChartOne();
         $chartTwo = $this->getDataChartTwo();
 
-        return view(
-            'admin.index', compact('amountSales', 'amountProducts', 'amountTypes', 'amountFlavors', 'amountSalesByDay', 'totalMoney', 'monthMoney', 'dayMoney', 'chartOne', 'chartTwo', 'sales', 'user'));
+        return view('admin.index', compact('amountSales', 'amountProducts', 'amountTypes', 'amountFlavors', 'amountSalesByDay', 'totalMoney', 'monthMoney', 'dayMoney', 'chartOne', 'chartTwo', 'sales', 'user'));
     }
     
     public function getDataChartOne()

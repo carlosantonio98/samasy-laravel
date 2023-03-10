@@ -130,14 +130,14 @@
                                 <div id="chartThree"></div>
                             </div>
                             <p class="text-gray-500 mb-2">Month money</p>
-                            <h5 class="text-xl font-bold">$ {{ $monthMoney }}.00</h5>
+                            <h5 class="text-xl font-bold">$ {{ $monthMoney }}</h5>
                         </div>
                         <div>
                             <div class="mb-3">
                                 <div id="chartFour"></div>
                             </div>
                             <p class="text-gray-500 mb-2">Day money</p>
-                            <h5 class="text-xl font-bold">$ {{ $dayMoney }}.00</h5>
+                            <h5 class="text-xl font-bold">$ {{ $dayMoney }}</h5>
                         </div>
                     </div>
                 </div>
