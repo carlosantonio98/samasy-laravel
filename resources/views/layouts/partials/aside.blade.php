@@ -52,6 +52,17 @@
                         </li>
                     @endcan
 
+                    @can('admin.expenses.index')
+                        <!--===== Item =====-->
+                        <li>
+                            <x-aside-link label="Expenses" route="admin.expenses.index">
+                                <x-slot name="svgpath">
+                                    <path d="M20 7V5c0-1.103-.897-2-2-2H5C3.346 3 2 4.346 2 6v12c0 2.201 1.794 3 3 3h15c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zm-2 9h-2v-4h2v4zM5 7a1.001 1.001 0 0 1 0-2h13v2H5z"></path>
+                                </x-slot>
+                            </x-aside-link>
+                        </li>
+                    @endcan
+                    
                     @can('admin.sales.index')
                         <!--===== Item =====-->
                         <li>
@@ -110,7 +121,7 @@
                 </ul>
 
                 <!--===== Extra item =====-->
-                <div class="space-y-2 pt-2">
+                {{-- <div class="space-y-2 pt-2">
 
                     <x-aside-link label="Settings">
                         <x-slot name="svgpath">
@@ -118,7 +129,7 @@
                         </x-slot>
                     </x-aside-link>
 
-                </div>
+                </div> --}}
 
             </div>
         </div>
