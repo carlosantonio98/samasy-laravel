@@ -1,5 +1,9 @@
 <x-app-layout>
     <div class="container mx-auto">
+
+        @if ( session()->has('info') )
+            <x-alert-notification type="{{ session('info')['type'] }}" title="{{ session('info')['title'] }}" text="{{ session('info')['text'] }}" />
+        @endif
         
         <div class="flex justify-between items-center">
             <h3 class="font-bold text-lg py-4">Update flavor</h3>
