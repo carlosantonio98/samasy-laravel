@@ -99,7 +99,8 @@ class SaleController extends Controller
     public function registerByQr(Request $request)
     {
         $request->validate([
-            'product_id' => 'required'
+            'product_id' => 'required',
+            'user_id'    => 'required'
         ]);
 
         $stock = Stock::where('product_id', $request['product_id'])->where('amount', '>=', 1)->first();
