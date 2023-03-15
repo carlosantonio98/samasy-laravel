@@ -10,7 +10,7 @@
         </div>
           
         <!-- component -->
-        <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
+        <div class="overflow-hidden overflow-x-auto rounded-lg border border-gray-200 shadow-md">
             <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                 <thead class="bg-gray-50">
                     <tr>
