@@ -68,7 +68,7 @@ class UserController extends Controller
         // Asignamos el rol
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('admin.users.edit', $user);
+        return redirect()->route('admin.users.edit', $user)->with('info', ['type' => 'success', 'title' => 'User created!', 'text' => 'User created successfully.']);
     }
 
 
@@ -107,7 +107,7 @@ class UserController extends Controller
 
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('admin.users.edit', $user);
+        return redirect()->route('admin.users.edit', $user)->with('info', ['type' => 'success', 'title' => 'User updated!', 'text' => 'User updated successfully.']);
     }
 
     /**
@@ -119,6 +119,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('info', ['type' => 'success', 'title' => 'User deleted!', 'text' => 'User deleted successfully.']);
     }
 }

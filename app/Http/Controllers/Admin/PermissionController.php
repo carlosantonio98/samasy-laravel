@@ -36,9 +36,8 @@ class PermissionController extends Controller
             'description' => 'required'
         ]);
 
-        $permission = Permission::create($request->all());
-
-        return redirect()->route('admin.permissions.edit', $permission);
+        $permission = Permission::create( $request->all() );
+        return redirect()->route('admin.permissions.edit', $permission)->with('info', ['type' => 'success', 'title' => 'Permission created!', 'text' => 'Permission created successfully.']);
     }
 
 
@@ -55,14 +54,12 @@ class PermissionController extends Controller
         ]);
 
         $permission->update($request->all());
-
-        return redirect()->route('admin.permissions.edit', $permission);
+        return redirect()->route('admin.permissions.edit', $permission)->with('info', ['type' => 'success', 'title' => 'Permission updated!', 'text' => 'Permission updated successfully.']);
     }
 
     public function destroy(Permission $permission) 
     {
         $permission->delete();
-
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->with('info', ['type' => 'success', 'title' => 'Permission deleted!', 'text' => 'Permission deleted successfully.']);
     }
 }

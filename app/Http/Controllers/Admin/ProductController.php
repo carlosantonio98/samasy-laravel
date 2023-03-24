@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function store(StoreProduct $request)
     {
         $product = Product::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
-        return redirect()->route('admin.products.edit', $product);
+        return redirect()->route('admin.products.edit', $product)->with('info', ['type' => 'success', 'title' => 'Product created!', 'text' => 'Product created successfully.']);
     }
 
 
@@ -53,13 +53,13 @@ class ProductController extends Controller
 
     public function update(UpdateProduct $request, Product $product)
     {
-        $product->update( $request->all() );
-        return redirect()->route('admin.products.edit', $product);
+        $product->update($request->all());
+        return redirect()->route('admin.products.edit', $product)->with('info', ['type' => 'success', 'title' => 'Product updated!', 'text' => 'Product updated successfully.']);
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('info', ['type' => 'success', 'title' => 'Product deleted!', 'text' => 'Product deleted successfully.']);
     }
 }

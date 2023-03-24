@@ -44,7 +44,7 @@ class RoleController extends Controller
         // Asignamos distintos permisos a el rol que acabamos de crear
         $role->permissions()->sync($request->permissions);
 
-        return redirect()->route('admin.roles.edit', $role);
+        return redirect()->route('admin.roles.edit', $role)->with('info', ['type' => 'success', 'title' => 'Role created!', 'text' => 'Role created successfully.']);
     }
 
     public function show(Role $role)
@@ -55,7 +55,6 @@ class RoleController extends Controller
     public function edit(Role $role) 
     {
         $permissions = Permission::all();
-
         return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
@@ -69,13 +68,12 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->permissions);
 
-        return redirect()->route('admin.roles.edit', $role);
+        return redirect()->route('admin.roles.edit', $role)->with('info', ['type' => 'success', 'title' => 'Role updated!', 'text' => 'Role updated successfully.']);
     }
 
     public function destroy(Role $role) 
     {
         $role->delete();
-
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('admin.roles.index')->with('info', ['type' => 'success', 'title' => 'Role deleted!', 'text' => 'Role deleted successfully.']);
     }
 }

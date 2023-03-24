@@ -35,8 +35,7 @@ class TypeController extends Controller
         ]);
         
         $type = Type::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
-
-        return redirect()->route('admin.types.edit', $type);
+        return redirect()->route('admin.types.edit', $type)->with('info', ['type' => 'success', 'title' => 'Type created!', 'text' => 'Type created successfully.']);
     }
 
     public function edit(Type $type)
@@ -50,15 +49,13 @@ class TypeController extends Controller
             'name' => 'required|unique:types,name,' . $type->id
         ]);
 
-        $type->update( $request->all() );
-
-        return redirect()->route('admin.types.edit', $type);
+        $type->update($request->all());
+        return redirect()->route('admin.types.edit', $type)->with('info', ['type' => 'success', 'title' => 'Type updated!', 'text' => 'Type updated successfully.']);
     }
 
     public function destroy(Type $type)
     {
         $type->delete();
-
-        return redirect()->route('admin.types.index');
+        return redirect()->route('admin.types.index')->with('info', ['type' => 'success', 'title' => 'Type deleted!', 'text' => 'Type deleted successfully.']);
     }
 }

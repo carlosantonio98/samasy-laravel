@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use App\Models\Sale;
 use App\Models\Stock;
 
@@ -50,10 +49,10 @@ class SaleController extends Controller
             $sale = Sale::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
             $stock->update([ 'amount' => $stock->amount - 1 ]);
             
-            return redirect()->route('admin.sales.edit', $sale);
+            return redirect()->route('admin.sales.edit', $sale)->with('info', ['type' => 'success', 'title' => 'Sale created!', 'text' => 'Sale created successfully.']);
         }
 
-        return redirect()->route('admin.stock.create');
+        return redirect()->route('admin.stock.create')->with('info', ['type' => 'error', 'title' => 'Sale no created!', 'text' => 'Sale no created, no products in stock.']);
     }
 
     public function edit(Sale $sale)
@@ -82,9 +81,10 @@ class SaleController extends Controller
             $newStock->update([ 'amount' => $newStock->amount - 1 ]);
 
             $sale->update( $request->all() );
+            return redirect()->route('admin.sales.edit', $sale)->with('info', ['type' => 'success', 'title' => 'Sale updated!', 'text' => 'Sale updated successfully.']);
         }
-
-        return redirect()->route('admin.sales.edit', $sale);
+        
+        return redirect()->route('admin.sales.edit', $sale)->with('info', ['type' => 'success', 'title' => 'Sale no updated!', 'text' => 'Sale no updated, no products in stock.']);
     }
 
     public function destroy(Sale $sale) {
@@ -93,6 +93,6 @@ class SaleController extends Controller
         $stock->update([ 'amount' => $stock->amount + 1 ]);
         $sale->delete();
 
-        return redirect()->route('admin.sales.index');
+        return redirect()->route('admin.sales.index')->with('info', ['type' => 'success', 'title' => 'Sale deleted!', 'text' => 'Sale deleted successfully.']);
     }
 }

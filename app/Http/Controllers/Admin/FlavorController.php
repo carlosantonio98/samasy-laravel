@@ -35,8 +35,7 @@ class FlavorController extends Controller
         ]);
 
         $flavor = Flavor::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
-
-        return redirect()->route('admin.flavors.edit', $flavor)->with('info', ['type' => 'success', 'title' => 'Flavor created', 'text' => 'Flavor created with exit!']);
+        return redirect()->route('admin.flavors.edit', $flavor)->with('info', ['type' => 'success', 'title' => 'Flavor created!', 'text' => 'Flavor created successfully.']);
     }
 
     public function edit(Flavor $flavor)
@@ -50,15 +49,13 @@ class FlavorController extends Controller
             'name' => 'required|unique:flavors,name,' . $flavor->id
         ]);
 
-        $flavor->update( $request->all() );
-
-        return redirect()->route('admin.flavors.edit', $flavor)->with('info', ['type' => 'success', 'title' => 'Flavor updated', 'text' => 'Flavor updated with exit!']);;
+        $flavor->update($request->all());
+        return redirect()->route('admin.flavors.edit', $flavor)->with('info', ['type' => 'success', 'title' => 'Flavor updated!', 'text' => 'Flavor updated successfully.']);;
     }
 
     public function destroy(Flavor $flavor)
     {
         $flavor->delete();
-
-        return redirect()->route('admin.flavors.index')->with('info', ['type' => 'success', 'title' => 'Flavor deleted', 'text' => 'Flavor deleted with exit!']);
+        return redirect()->route('admin.flavors.index')->with('info', ['type' => 'success', 'title' => 'Flavor deleted!', 'text' => 'Flavor deleted successfully.']);
     }
 }

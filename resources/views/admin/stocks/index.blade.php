@@ -1,6 +1,11 @@
 <x-app-layout>
     <div class="container mx-auto">
-        
+
+        <!-- alert -->
+        @if ( session()->has('info') )
+            <x-alert-notification type="{{ session('info')['type'] }}" title="{{ session('info')['title'] }}" text="{{ session('info')['text'] }}" />
+        @endif
+
         <div class="flex justify-between items-center mb-5">
             <h3 class="font-bold text-lg py-4">Stocks list</h3>
 

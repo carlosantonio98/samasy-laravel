@@ -1,6 +1,7 @@
 <x-app-layout>
     <div class="container mx-auto">
 
+        <!-- alert -->
         @if ( session()->has('info') )
             <x-alert-notification type="{{ session('info')['type'] }}" title="{{ session('info')['title'] }}" text="{{ session('info')['text'] }}" />
         @endif

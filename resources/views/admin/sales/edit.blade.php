@@ -1,6 +1,11 @@
 <x-app-layout>
     <div class="container mx-auto">
-        
+
+        <!-- alert -->
+        @if ( session()->has('info') )
+            <x-alert-notification type="{{ session('info')['type'] }}" title="{{ session('info')['title'] }}" text="{{ session('info')['text'] }}" />
+        @endif
+
         <div class="flex justify-between items-center">
             <h3 class="font-bold text-lg py-4">Update sale</h3>
             <a href="{{ route('admin.sales.index') }}" class="p-2 rounded-lg font-medium text-gray-200 bg-gray-700 hover:bg-gray-500">Back</a>
@@ -25,7 +30,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500">Create</button>
+                    <button type="submit" class="p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500">Update</button>
                 </form>
             </div>
         </div>
