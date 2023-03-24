@@ -22,7 +22,7 @@ class StockController extends Controller
 
     public function index()
     {
-        $stocks = Stock::with('product')->latest()->get();
+        $stocks = Stock::with('product')->latest()->paginate();
         return view('admin.stocks.index', compact('stocks'));
     }
 

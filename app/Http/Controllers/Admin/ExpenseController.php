@@ -21,7 +21,7 @@ class ExpenseController extends Controller
 
     public function index()
     {
-        $expenses = Expense::latest()->get();
+        $expenses = Expense::latest()->paginate();
         return view('admin.expenses.index', compact('expenses'));
     }
 

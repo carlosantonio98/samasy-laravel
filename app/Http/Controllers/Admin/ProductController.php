@@ -23,7 +23,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->paginate();
         return view('admin.products.index', compact('products'));
     }
 

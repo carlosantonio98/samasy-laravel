@@ -21,7 +21,7 @@ class SaleController extends Controller
 
     public function index()
     {
-        $sales = Sale::with('product')->latest()->get();
+        $sales = Sale::with('product')->latest()->paginate();
         return view('admin.sales.index', compact('sales'));
     }
 
@@ -94,24 +94,5 @@ class SaleController extends Controller
         $sale->delete();
 
         return redirect()->route('admin.sales.index');
-    }
-
-    public function registerByQr(Request $request)
-    {
-        $request->validate([
-            'product_id' => 'required',
-            'user_id'    => 'required'
-        ]);
-
-        $stock = Stock::where('product_id', $request['product_id'])->where('amount', '>=', 1)->first();
-
-        if ($stock) {
-            Sale::create( $request->all() );
-            $stock->update([ 'amount' => $stock->amount - 1 ]);
-        
-            return response('Success', 201);
-        }
-
-        return response('UnStock', 201);
     }
 }

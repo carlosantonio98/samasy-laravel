@@ -19,7 +19,7 @@ class FlavorController extends Controller
 
     public function index()
     {
-        $flavors = Flavor::latest()->get();
+        $flavors = Flavor::latest()->paginate();
         return view('admin.flavors.index', compact('flavors'));
     }
 
