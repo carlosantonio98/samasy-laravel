@@ -46,10 +46,10 @@ class SaleController extends Controller
         $stock = Stock::where('product_id', $request['product_id'])->where('amount', '>=', 1)->first();
 
         if ($stock) {
-            $sale = Sale::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
+            Sale::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
             $stock->update([ 'amount' => $stock->amount - 1 ]);
             
-            return redirect()->route('admin.sales.edit', $sale)->with('info', ['type' => 'success', 'title' => 'Sale created!', 'text' => 'Sale created successfully.']);
+            return redirect()->route('admin.sales.index')->with('info', ['type' => 'success', 'title' => 'Sale created!', 'text' => 'Sale created successfully.']);
         }
 
         return redirect()->route('admin.stock.create')->with('info', ['type' => 'error', 'title' => 'Sale no created!', 'text' => 'Sale no created, no products in stock.']);
@@ -81,7 +81,7 @@ class SaleController extends Controller
             $newStock->update([ 'amount' => $newStock->amount - 1 ]);
 
             $sale->update( $request->all() );
-            return redirect()->route('admin.sales.edit', $sale)->with('info', ['type' => 'success', 'title' => 'Sale updated!', 'text' => 'Sale updated successfully.']);
+            return redirect()->route('admin.sales.index')->with('info', ['type' => 'success', 'title' => 'Sale updated!', 'text' => 'Sale updated successfully.']);
         }
         
         return redirect()->route('admin.sales.edit', $sale)->with('info', ['type' => 'success', 'title' => 'Sale no updated!', 'text' => 'Sale no updated, no products in stock.']);

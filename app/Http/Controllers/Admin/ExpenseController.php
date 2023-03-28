@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExpense;
 use App\Http\Requests\UpdateExpense;
-use Illuminate\Http\Request;
 use App\Models\Expense;
 
 class ExpenseController extends Controller
@@ -33,8 +32,8 @@ class ExpenseController extends Controller
 
     public function store(StoreExpense $request)
     {
-        $expense = Expense::create($request->all() + [ 'user_id' => Auth()->user()->id ]);
-        return redirect()->route('admin.expenses.edit', $expense)->with('info', ['type' => 'success', 'title' => 'Expense created!', 'text' => 'Expense created successfully.']);
+        Expense::create($request->all() + [ 'user_id' => Auth()->user()->id ]);
+        return redirect()->route('admin.expenses.index')->with('info', ['type' => 'success', 'title' => 'Expense created!', 'text' => 'Expense created successfully.']);
     }
 
     public function edit(Expense $expense)
@@ -45,7 +44,7 @@ class ExpenseController extends Controller
     public function update(UpdateExpense $request, Expense $expense)
     {
         $expense->update($request->all());
-        return redirect()->route('admin.expenses.edit', $expense)->with('info', ['type' => 'success', 'title' => 'Expense updated!', 'text' => 'Expense updated successfully.']);
+        return redirect()->route('admin.expenses.index')->with('info', ['type' => 'success', 'title' => 'Expense updated!', 'text' => 'Expense updated successfully.']);
     }
 
     public function destroy(Expense $expense)

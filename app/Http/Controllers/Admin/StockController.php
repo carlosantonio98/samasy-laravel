@@ -36,8 +36,8 @@ class StockController extends Controller
 
     public function store(StoreStock $request)
     {
-        $stock = Stock::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
-        return redirect()->route('admin.stocks.edit', $stock)->with('info', ['type' => 'success', 'title' => 'Stock created!', 'text' => 'Stock created successfully.']);
+        Stock::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
+        return redirect()->route('admin.stocks.index')->with('info', ['type' => 'success', 'title' => 'Stock created!', 'text' => 'Stock created successfully.']);
     }
 
     public function edit(Stock $stock)
@@ -49,7 +49,7 @@ class StockController extends Controller
     public function update(UpdateStock $request, Stock $stock)
     {
         $stock->update($request->all());
-        return redirect()->route('admin.stocks.edit', $stock)->with('info', ['type' => 'success', 'title' => 'Stock updated!', 'text' => 'Stock updated successfully.']);
+        return redirect()->route('admin.stocks.index')->with('info', ['type' => 'success', 'title' => 'Stock updated!', 'text' => 'Stock updated successfully.']);
     }
 
     public function destroy(Stock $stock)

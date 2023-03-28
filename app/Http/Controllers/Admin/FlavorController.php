@@ -34,8 +34,8 @@ class FlavorController extends Controller
             'name' => 'required|unique:flavors'
         ]);
 
-        $flavor = Flavor::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
-        return redirect()->route('admin.flavors.edit', $flavor)->with('info', ['type' => 'success', 'title' => 'Flavor created!', 'text' => 'Flavor created successfully.']);
+        Flavor::create( $request->all() + [ 'user_id' => Auth()->user()->id ] );
+        return redirect()->route('admin.flavors.index')->with('info', ['type' => 'success', 'title' => 'Flavor created!', 'text' => 'Flavor created successfully.']);
     }
 
     public function edit(Flavor $flavor)
@@ -50,7 +50,7 @@ class FlavorController extends Controller
         ]);
 
         $flavor->update($request->all());
-        return redirect()->route('admin.flavors.edit', $flavor)->with('info', ['type' => 'success', 'title' => 'Flavor updated!', 'text' => 'Flavor updated successfully.']);;
+        return redirect()->route('admin.flavors.index')->with('info', ['type' => 'success', 'title' => 'Flavor updated!', 'text' => 'Flavor updated successfully.']);;
     }
 
     public function destroy(Flavor $flavor)

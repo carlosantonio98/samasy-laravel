@@ -68,7 +68,7 @@ class UserController extends Controller
         // Asignamos el rol
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('admin.users.edit', $user)->with('info', ['type' => 'success', 'title' => 'User created!', 'text' => 'User created successfully.']);
+        return redirect()->route('admin.users.index')->with('info', ['type' => 'success', 'title' => 'User created!', 'text' => 'User created successfully.']);
     }
 
 
@@ -107,7 +107,7 @@ class UserController extends Controller
 
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('admin.users.edit', $user)->with('info', ['type' => 'success', 'title' => 'User updated!', 'text' => 'User updated successfully.']);
+        return redirect()->route('admin.users.index')->with('info', ['type' => 'success', 'title' => 'User updated!', 'text' => 'User updated successfully.']);
     }
 
     /**

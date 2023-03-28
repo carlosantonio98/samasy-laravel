@@ -41,10 +41,12 @@
         <p class="py-2 px-3 rounded-lg bg-orange-100 ">No roles</p>
     @endIf
 
-    @foreach ($roles as $role)
-        <label>
-            <input type="checkbox" name="roles[]" value="{{ $role->id }}" class="mr-2" {{ ($user->roles->contains('id', $role->id)) ? 'checked':'' }}>
-            {{ $role->name }}
-        </label>
-    @endforeach
+    <ul class="grid md:grid-cols-2 lg:grid-cols-3">
+        @foreach ($roles as $role)
+            <label>
+                <input type="checkbox" name="roles[]" value="{{ $role->id }}" class="mr-2" {{ ($user->roles->contains('id', $role->id)) ? 'checked':'' }}>
+                {{ $role->name }}
+            </label>
+        @endforeach
+    </ul>
 </div>
