@@ -24,7 +24,7 @@ class UpdateStock extends FormRequest
     public function rules()
     {
         return [
-            'amount'     => 'required',
+            'amount'     => 'required|numeric|min:0',
             'product_id' => 'required'
         ];
     }

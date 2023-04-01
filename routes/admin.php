@@ -19,7 +19,6 @@ Route::resource('products', ProductController::class)->except('show')->names('ad
 Route::resource('expenses', ExpenseController::class)->except('show')->names('admin.expenses');
 
 Route::resource('sales', SaleController::class)->except('show')->names('admin.sales');
-Route::get('sales/register-by-qr', [SaleController::class, 'registerByQr'])->name('admin.sales.registerByQr');
 
 Route::resource('stocks', StockController::class)->names('admin.stocks');
 Route::resource('users', UserController::class)->names('admin.users');

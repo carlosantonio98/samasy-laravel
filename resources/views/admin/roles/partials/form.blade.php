@@ -1,6 +1,6 @@
 <div class="flex flex-col mb-4">
-    <label for="name" class="mb-2">Name of role</label>
-    <input type="text" name="name" id="name" placeholder="Insert the name" class="py-2 px-3 rounded-lg bg-gray-100" value="{{ old('name', $role->name) }}" autofocus>
+    {!! Form::label('name', 'Name of role', ['class' => 'mb-2']) !!}
+    {!! Form::text('name', null, ['class' => 'py-2 px-3 rounded-lg bg-gray-100', 'placeholder' => 'Insert the role', 'autofocus' => true]) !!}
     
     @error('name')
         <span class="text-red-500">{{ $message }}</span>
@@ -17,8 +17,10 @@
     <ul class="grid md:grid-cols-2 lg:grid-cols-3">
         @foreach ($permissions as $permission)
             <li>
-                <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="mr-2" {{ ($role->permissions->contains('id', $permission->id)) ? 'checked':'' }}>
-                {{ $permission->description }}
+                <label>
+                    {!! Form::checkbox('permissions[]', $permission->id, ($role->permissions->contains('id', $permission->id)), ['class' => 'mr-2']) !!}
+                    {{ $permission->description }}
+                </label>
             </li>
         @endforeach
     </ul>

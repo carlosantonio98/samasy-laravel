@@ -29,7 +29,7 @@ class StockController extends Controller
     public function create()
     {
         $stock = new Stock();
-        $products = Product::all();
+        $products = Product::pluck('name', 'id');
 
         return view('admin.stocks.create', compact('stock', 'products'));
     }
@@ -42,7 +42,7 @@ class StockController extends Controller
 
     public function edit(Stock $stock)
     {
-        $products = Product::all();
+        $products = Product::pluck('name', 'id');
         return view('admin.stocks.edit', compact('stock', 'products'));
     }
 

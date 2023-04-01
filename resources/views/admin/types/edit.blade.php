@@ -8,20 +8,13 @@
         
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
             <div class="w-full bg-white px-6 py-4">
-                <form action="{{ route('admin.types.update', $type) }}" method="post">
-                    @csrf
-                    @method('put')
+                {!! Form::model($type, ['route' => ['admin.types.update', $type], 'method' => 'put']) !!}
 
-                    <div class="flex flex-col mb-4">
-                        <label for="name" class="mb-2">Name of type</label>
-                        <input type="text" name="name" id="name" placeholder="Insert the type" class="py-2 px-3 rounded-lg bg-gray-100" value="{{ old('name', $type->name) }}" autofocus>
-                        
-                        @error('name')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <button type="submit" class="p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500">Update</button>
-                </form>
+                    @include('admin.types.partials.form')
+
+                    {!! Form::submit('Update', ['class' => 'p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500']) !!}
+
+                {!! Form::close() !!}
             </div>
         </div>
 

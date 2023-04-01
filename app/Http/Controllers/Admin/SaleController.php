@@ -28,11 +28,13 @@ class SaleController extends Controller
     {
         $sale     = new Sale();
         $stocks   = Stock::with('product')->where('amount', '>=', 1)->get();
-        $products = [];
+        $products = collect();
 
         foreach($stocks as $stock) {
-            array_push($products, $stock->product);
+            $products->add($stock->product);
         }
+
+        $products = $products->pluck('name', 'id');
 
         return view('admin.sales.create', compact('sale', 'products'));
     }
@@ -58,11 +60,13 @@ class SaleController extends Controller
     public function edit(Sale $sale)
     {
         $stocks   = Stock::with('product')->where('amount', '>=', 1)->get();
-        $products = [];
+        $products = collect();
 
         foreach($stocks as $stock) {
-            array_push($products, $stock->product);
+            $products->add($stock->product);
         }
+
+        $products = $products->pluck('name', 'id');
 
         return view('admin.sales.edit', compact('sale', 'products'));
     }

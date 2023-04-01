@@ -8,14 +8,13 @@
         
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
             <div class="w-full bg-white px-6 py-4">
-                <form action="{{ route('admin.stocks.update', $stock) }}" method="post">
-                    @csrf
-                    @method('put')
+                {!! Form::model($stock, ['route' => ['admin.stocks.update', $stock], 'method' => 'put']) !!}
 
                     @include('admin.stocks.partials.form')
-                    
-                    <button type="submit" class="p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500">Update</button>
-                </form>
+
+                    {!! Form::submit('Update', ['class' => 'p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500']) !!}
+
+                {!! Form::close() !!}
             </div>
         </div>
 

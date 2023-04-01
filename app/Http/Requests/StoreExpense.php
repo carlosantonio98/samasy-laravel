@@ -26,7 +26,7 @@ class StoreExpense extends FormRequest
         return [
             'provider' => 'required|max:200',
             'concept'  => 'required',
-            'amount'   => 'required|numeric'
+            'amount'   => 'required|numeric|min:0',
         ];
     }
 }

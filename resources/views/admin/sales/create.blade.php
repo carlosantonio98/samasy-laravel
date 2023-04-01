@@ -13,24 +13,13 @@
         
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
             <div class="w-full bg-white px-6 py-4">
-                <form action="{{ route('admin.sales.store') }}" method="post">
-                    @csrf
+                {!! Form::open(['route' => 'admin.sales.store']) !!}
+  
+                    @include('admin.sales.partials.form')
 
-                    <div class="flex flex-col mb-4">
-                        <label for="product_id" class="mb-2">Product</label>
-                        <select name="product_id" class="py-2 px-3 rounded-lg bg-gray-100" autofocus>
-                            @foreach ($products as $product)
-                                <option value="{{ $product->id }}" {{ ($product->id == $sale->product_id) ? 'Selected':'' }}>{{ $product->name }}</option>
-                            @endforeach
-                        </select>
-                        
-                        @error('flavor_id')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    {!! Form::submit('Create', ['class' => 'p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500']) !!}
 
-                    <button type="submit" class="p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500">Create</button>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
 

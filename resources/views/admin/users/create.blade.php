@@ -8,13 +8,13 @@
         
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
             <div class="w-full bg-white px-6 py-4">
-                <form action="{{ route('admin.users.store') }}" method="post">
-                    @csrf
-        
+                {!! Form::open(['route' => 'admin.users.store']) !!}
+
                     @include('admin.users.partials.form')
 
-                    <button type="submit" class="p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500">Create</button>
-                </form>
+                    {!! Form::submit('Create', ['class' => 'p-2 rounded-lg font-medium text-gray-200 bg-green-700 hover:bg-green-500']) !!}
+
+                {!! Form::close() !!}
             </div>
         </div>
 

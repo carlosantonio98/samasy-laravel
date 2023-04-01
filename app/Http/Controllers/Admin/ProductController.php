@@ -30,8 +30,8 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        $types   = Type::all();
-        $flavors = Flavor::all();
+        $types   = Type::pluck('name', 'id');
+        $flavors = Flavor::pluck('name', 'id');
 
         return view('admin.products.create', compact('product', 'types', 'flavors'));
     }
@@ -45,8 +45,8 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $types   = Type::all();
-        $flavors = Flavor::all();
+        $types   = Type::pluck('name', 'id');
+        $flavors = Flavor::pluck('name', 'id');
 
         return view('admin.products.edit', compact('product', 'types', 'flavors'));
     }
