@@ -15,7 +15,7 @@ class SaleController extends Controller
         $this->middleware('can:admin.sales.index')->only('index');
         $this->middleware('can:admin.sales.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.sales.create
         $this->middleware('can:admin.sales.edit')->only('edit', 'update');
-        $this->middleware('can:admin.sales.destroy')->only('destroy');
+        $this->middleware('can:admin.sales.destroy')->only('delete', 'destroy');
     }
 
     public function index()
@@ -89,6 +89,11 @@ class SaleController extends Controller
         }
         
         return redirect()->route('admin.sales.edit', $sale)->with('info', ['type' => 'success', 'title' => 'Sale no updated!', 'text' => 'Sale no updated, no products in stock.']);
+    }
+
+    public function delete(Sale $sale)
+    {
+        return view('admin.sales.delete', compact('sale'));
     }
 
     public function destroy(Sale $sale) {

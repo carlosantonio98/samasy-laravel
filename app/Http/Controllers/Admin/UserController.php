@@ -18,25 +18,15 @@ class UserController extends Controller
         $this->middleware('can:admin.users.index')->only('index');
         $this->middleware('can:admin.users.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.users.create
         $this->middleware('can:admin.users.edit')->only('edit', 'update');
-        $this->middleware('can:admin.users.destroy')->only('destroy');
+        $this->middleware('can:admin.users.destroy')->only('delete', 'destroy');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $users = User::latest()->paginate();
         return view('admin.users.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $user = new User();
@@ -45,12 +35,6 @@ class UserController extends Controller
         return view('admin.users.create', compact('user', 'roles'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -71,26 +55,12 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('info', ['type' => 'success', 'title' => 'User created!', 'text' => 'User created successfully.']);
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param User $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
         $roles = Role::all();
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param User $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, User $user)
     {
         $request->validate([
@@ -110,12 +80,11 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('info', ['type' => 'success', 'title' => 'User updated!', 'text' => 'User updated successfully.']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param User $user
-     * @return \Illuminate\Http\Response
-     */
+    public function delete(User $user)
+    {
+        return view('admin.users.delete', compact('user'));
+    }
+
     public function destroy(User $user)
     {
         $user->delete();

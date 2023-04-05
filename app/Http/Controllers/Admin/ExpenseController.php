@@ -15,7 +15,7 @@ class ExpenseController extends Controller
         $this->middleware('can:admin.expenses.index')->only('index');
         $this->middleware('can:admin.expenses.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.expenses.create
         $this->middleware('can:admin.expenses.edit')->only('edit', 'update');
-        $this->middleware('can:admin.expenses.destroy')->only('destroy');
+        $this->middleware('can:admin.expenses.destroy')->only('delete', 'destroy');
     }
 
     public function index()
@@ -45,6 +45,11 @@ class ExpenseController extends Controller
     {
         $expense->update($request->all());
         return redirect()->route('admin.expenses.index')->with('info', ['type' => 'success', 'title' => 'Expense updated!', 'text' => 'Expense updated successfully.']);
+    }
+
+    public function delete(Expense $expense)
+    {
+        return view('admin.expenses.delete', compact('expense'));
     }
 
     public function destroy(Expense $expense)

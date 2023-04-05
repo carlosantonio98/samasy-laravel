@@ -14,7 +14,7 @@ class PermissionController extends Controller
         $this->middleware('can:admin.permissions.index')->only('index');
         $this->middleware('can:admin.permissions.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.permissions.create
         $this->middleware('can:admin.permissions.edit')->only('edit', 'update');
-        $this->middleware('can:admin.permissions.destroy')->only('destroy');
+        $this->middleware('can:admin.permissions.destroy')->only('delete', 'destroy');
     }
 
     public function index() 
@@ -55,6 +55,11 @@ class PermissionController extends Controller
 
         $permission->update($request->all());
         return redirect()->route('admin.permissions.index')->with('info', ['type' => 'success', 'title' => 'Permission updated!', 'text' => 'Permission updated successfully.']);
+    }
+
+    public function delete(Permission $permission)
+    {
+        return view('admin.permissions.delete', compact('permission'));
     }
 
     public function destroy(Permission $permission) 

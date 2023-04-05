@@ -6,6 +6,11 @@
             <x-alert-notification type="{{ session('info')['type'] }}" title="{{ session('info')['title'] }}" text="{{ session('info')['text'] }}" />
         @endif
 
+        <!-- modal delete -->
+        @can('admin.roles.destroy')
+            <div id="modalDelete"></div>
+        @endcan
+
         <div class="flex justify-between items-center mb-5">
             <h3 class="font-bold text-lg py-4">Roles list</h3>
 
@@ -40,12 +45,9 @@
                                     @endcan
 
                                     @can('admin.roles.destroy')
-                                        <form action="{{ route('admin.roles.destroy', $role) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                    
-                                            <button type="submit" class="p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400" href="{{ route('admin.roles.destroy', $role) }}"><i class="fa-solid fa-trash"></i></button>
-                                        </form>
+                                        <button data-url="{{ route('admin.roles.delete', $role) }}" class="btn-modal-delete p-2 rounded-lg font-medium text-gray-800 hover:text-gray-400 focus:outline-none focus:ring focus:ring-gray-400">
+                                            <i class="fa-solid fa-trash pointer-events-none"></i>
+                                        </button>
                                     @endcan
 
                                 </div>
@@ -65,3 +67,21 @@
         {{ $roles->links() }}
     </div>
 </x-app-layout>
+
+<script>
+    const btnsModalDelete = document.getElementsByClassName('btn-modal-delete');
+
+    const showModalDelete = ({ target }) => {
+        const route = target.getAttribute('data-url');
+        
+        axios.get( route )
+            .then(({ data }) => {
+                const modal = document.querySelector( '#modalDelete' );
+                modal.innerHTML = data;
+            });
+    }
+
+    for( let btnModalDelete of btnsModalDelete ) {
+        btnModalDelete.addEventListener( 'click', showModalDelete );
+    }
+</script>

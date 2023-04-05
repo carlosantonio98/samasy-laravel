@@ -15,7 +15,7 @@ class RoleController extends Controller
         $this->middleware('can:admin.roles.index')->only('index');
         $this->middleware('can:admin.roles.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.roles.create
         $this->middleware('can:admin.roles.edit')->only('edit', 'update');
-        $this->middleware('can:admin.roles.destroy')->only('destroy');
+        $this->middleware('can:admin.roles.destroy')->only('delete', 'destroy');
     }
 
     public function index() 
@@ -69,6 +69,11 @@ class RoleController extends Controller
         $role->permissions()->sync($request->permissions);
 
         return redirect()->route('admin.roles.index')->with('info', ['type' => 'success', 'title' => 'Role updated!', 'text' => 'Role updated successfully.']);
+    }
+
+    public function delete(Role $role)
+    {
+        return view('admin.roles.delete', compact('role'));
     }
 
     public function destroy(Role $role) 

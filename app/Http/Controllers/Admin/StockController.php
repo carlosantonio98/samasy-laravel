@@ -17,7 +17,7 @@ class StockController extends Controller
         $this->middleware('can:admin.stocks.index')->only('index');
         $this->middleware('can:admin.stocks.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.stocks.create
         $this->middleware('can:admin.stocks.edit')->only('edit', 'update');
-        $this->middleware('can:admin.stocks.destroy')->only('destroy');
+        $this->middleware('can:admin.stocks.destroy')->only('delete', 'destroy');
     }
 
     public function index()
@@ -50,6 +50,11 @@ class StockController extends Controller
     {
         $stock->update($request->all());
         return redirect()->route('admin.stocks.index')->with('info', ['type' => 'success', 'title' => 'Stock updated!', 'text' => 'Stock updated successfully.']);
+    }
+
+    public function delete(Stock $stock)
+    {
+        return view('admin.stocks.delete', compact('stock'));
     }
 
     public function destroy(Stock $stock)

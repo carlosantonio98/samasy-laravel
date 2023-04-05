@@ -18,7 +18,7 @@ class ProductController extends Controller
         $this->middleware('can:admin.products.index')->only('index');
         $this->middleware('can:admin.products.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.products.create
         $this->middleware('can:admin.products.edit')->only('edit', 'update');
-        $this->middleware('can:admin.products.destroy')->only('destroy');
+        $this->middleware('can:admin.products.destroy')->only('delete', 'destroy');
     }
 
     public function index()
@@ -55,6 +55,11 @@ class ProductController extends Controller
     {
         $product->update($request->all());
         return redirect()->route('admin.products.index')->with('info', ['type' => 'success', 'title' => 'Product updated!', 'text' => 'Product updated successfully.']);
+    }
+
+    public function delete(Product $product)
+    {
+        return view('admin.products.delete', compact('product'));
     }
 
     public function destroy(Product $product)
