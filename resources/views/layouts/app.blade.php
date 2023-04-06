@@ -24,11 +24,11 @@
                 @include('layouts.partials.header')
                 
                 <!--===== Main contente =====-->
-                <div class="flex overflow-hidden bg-white pt-16">
+                <div class="flex overflow-hidden bg-white pt-[64px] lg:pt-[58px]">
                     @include('layouts.partials.aside')
 
                     <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
-                    <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+                    <div id="main-content" class="w-full h-full min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-58px)] lg:ml-64 flex flex-col justify-between bg-gray-50 relative overflow-y-auto">
                         
                         <!--===== Page content =====-->
                         <main>
