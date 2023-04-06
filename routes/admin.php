@@ -29,13 +29,13 @@ Route::get('expenses/{expense}/delete', [ExpenseController::class, 'delete'])->n
 Route::resource('sales', SaleController::class)->except('show')->names('admin.sales');
 Route::get('sales/{sale}/delete', [SaleController::class, 'delete'])->name('admin.sales.delete');
 
-Route::resource('stocks', StockController::class)->names('admin.stocks');
+Route::resource('stocks', StockController::class)->except('show')->names('admin.stocks');
 Route::get('stocks/{stock}/delete', [StockController::class, 'delete'])->name('admin.stocks.delete');
 
-Route::resource('users', UserController::class)->except(['show', 'destroy'])->names('admin.users');
+Route::resource('users', UserController::class)->except('show')->except(['show', 'destroy'])->names('admin.users');
 
-Route::resource('roles', RoleController::class)->names('admin.roles');
+Route::resource('roles', RoleController::class)->except('show')->names('admin.roles');
 Route::get('roles/{role}/delete', [RoleController::class, 'delete'])->name('admin.roles.delete');
 
-Route::resource('permissions', PermissionController::class)->names('admin.permissions');
+Route::resource('permissions', PermissionController::class)->except('show')->names('admin.permissions');
 Route::get('permissions/{permission}/delete', [PermissionController::class, 'delete'])->name('admin.permissions.delete');
