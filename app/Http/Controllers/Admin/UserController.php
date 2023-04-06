@@ -18,7 +18,6 @@ class UserController extends Controller
         $this->middleware('can:admin.users.index')->only('index');
         $this->middleware('can:admin.users.create')->only('create', 'store'); // Quiero que este middleware verifique que los usuarios que entren a la ruta tanto create como store tengan el permiso admin.users.create
         $this->middleware('can:admin.users.edit')->only('edit', 'update');
-        $this->middleware('can:admin.users.destroy')->only('delete', 'destroy');
     }
 
     public function index()
@@ -78,16 +77,5 @@ class UserController extends Controller
         $user->roles()->sync($request->roles);
 
         return redirect()->route('admin.users.index')->with('info', ['type' => 'success', 'title' => 'User updated!', 'text' => 'User updated successfully.']);
-    }
-
-    public function delete(User $user)
-    {
-        return view('admin.users.delete', compact('user'));
-    }
-
-    public function destroy(User $user)
-    {
-        $user->delete();
-        return redirect()->route('admin.users.index')->with('info', ['type' => 'success', 'title' => 'User deleted!', 'text' => 'User deleted successfully.']);
     }
 }

@@ -32,8 +32,7 @@ Route::get('sales/{sale}/delete', [SaleController::class, 'delete'])->name('admi
 Route::resource('stocks', StockController::class)->names('admin.stocks');
 Route::get('stocks/{stock}/delete', [StockController::class, 'delete'])->name('admin.stocks.delete');
 
-Route::resource('users', UserController::class)->names('admin.users');
-Route::get('users/{user}/delete', [UserController::class, 'delete'])->name('admin.users.delete');
+Route::resource('users', UserController::class)->except(['show', 'destroy'])->names('admin.users');
 
 Route::resource('roles', RoleController::class)->names('admin.roles');
 Route::get('roles/{role}/delete', [RoleController::class, 'delete'])->name('admin.roles.delete');
