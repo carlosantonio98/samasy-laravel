@@ -6,9 +6,9 @@
             <h3 class="font-bold text-lg py-4">Dashboard</h3>
         </div>
 
-        <div class="grid xl:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
             <div class="xl:col-span-2">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
                     <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md w-full p-6 flex justify-between bg-white">
                         <div>
                             <p class="text-gray-500">Total money</p>
@@ -84,36 +84,38 @@
                     <div class="h-[300px]" id="chartOne"></div>
                 </div>
 
-                <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md w-full p-6 mb-5 bg-white">
+                <div class="rounded-lg border border-gray-200 shadow-md w-full p-6 mb-5 bg-white">
                     <p class="font-bold mb-4">Latest sales</p> 
-                    <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">PRODUCT</th>
-                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">PRICE</th>
-                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">TYPE</th>
-                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">FLAVOR</th>
-                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">CREATED AT</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-        
-                            @forelse ($sales as $sale)
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4">{{ $sale->product->name }}</td>
-                                    <td class="px-6 py-4">{{ $sale->product->price }}</td>
-                                    <td class="px-6 py-4">{{ $sale->product->type->name }}</td>
-                                    <td class="px-6 py-4">{{ $sale->product->flavor->name }}</td>
-                                    <td class="px-6 py-4">{{ $sale->created_at->format('d/m/Y') }}</td>
+                    <div class="overflow-hidden overflow-x-auto">
+                        <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">PRODUCT</th>
+                                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">PRICE</th>
+                                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">TYPE</th>
+                                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">FLAVOR</th>
+                                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">CREATED AT</th>
                                 </tr>
-                            @empty
-                                <tr class="text-center">
-                                    <td colspan="5" class="px-6 py-4">Sin registros</td>
-                                </tr>
-                            @endforelse
-        
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+            
+                                @forelse ($sales as $sale)
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4">{{ $sale->product->name }}</td>
+                                        <td class="px-6 py-4">{{ $sale->product->price }}</td>
+                                        <td class="px-6 py-4">{{ $sale->product->type->name }}</td>
+                                        <td class="px-6 py-4">{{ $sale->product->flavor->name }}</td>
+                                        <td class="px-6 py-4">{{ $sale->created_at->format('d/m/Y') }}</td>
+                                    </tr>
+                                @empty
+                                    <tr class="text-center">
+                                        <td colspan="5" class="px-6 py-4">Sin registros</td>
+                                    </tr>
+                                @endforelse
+            
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -187,7 +189,7 @@
                 breakpoint: 480,
                 options: {
                     chart: {
-                        width: 200
+                        width: '100%'
                     },
                     legend: {
                         position: 'bottom'
