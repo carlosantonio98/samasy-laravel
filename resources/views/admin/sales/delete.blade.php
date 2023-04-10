@@ -16,7 +16,7 @@
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
     >
-        <div class="absolute inset-0 bg-gray-500 opacity-75 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
     </div>
 
     <div
