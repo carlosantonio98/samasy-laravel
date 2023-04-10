@@ -12,7 +12,7 @@ class ProductObserver
     public function created(Product $product)
     {
         $fileName = time() . '.svg';
-        $qrCode = QrCode::size(100)->generate(route('admin.sales.registerByQr', ['product_id' => $product->id]), '../public/qrcodes/' . $fileName);
+        $qrCode = QrCode::size(100)->generate($product->id, '../public/qrcodes/' . $fileName);
 
         $product->update([
             'qr_code' => $fileName
