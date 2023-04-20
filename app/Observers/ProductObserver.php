@@ -12,7 +12,7 @@ class ProductObserver
     public function created(Product $product)
     {
         $fileName = time() . '.svg';
-        $qrCode = QrCode::size(100)->generate($product->id, '../public/qrcodes/' . $fileName);
+        $qrCode = QrCode::size(100)->generate($product->id, '../public/storage/qrcodes/' . $fileName);
 
         $product->update([
             'qr_code' => $fileName
@@ -21,7 +21,7 @@ class ProductObserver
 
     public function deleting(Product $product)
     {
-        File::delete('qrcodes/' . $product->qr_code);
+        File::delete('storage/qrcodes/' . $product->qr_code);
     }
 
 }
