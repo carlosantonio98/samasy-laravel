@@ -3,9 +3,10 @@
 
 El sistema propuesto es una solución para llevar un control efectivo de las ventas de productos de un negocio de aguas frescas. Cada producto registrado recibe un código QR único que, al ser escaneado al venderse, actualiza el inventario y registra la venta en la base de datos. Esto permite analizar las ventas, identificar los productos más vendidos y tomar decisiones informadas para mejorar la gestión y rentabilidad del negocio. 
 
-Para poder escanear los códigos QR del sistema, es requisito utilizar una aplicación especial que ha sido diseñada específicamente para este propósito. Esta aplicación ha sido desarrollada para garantizar la adecuada lectura y decodificación de los códigos QR utilizados en nuestro sistema, asegurando así la eficiencia y precisión en la obtención de la información asociada a dichos códigos. La aplicación la podrás encontrar [aquí](https://github.com/carlosantonio98/Samasy-App-Flutter).
+Para poder escanear los códigos QR del sistema, es requisito utilizar una aplicación especial que ha sido diseñada específicamente para este propósito. Esta aplicación ha sido desarrollada para garantizar la adecuada lectura y decodificación de los códigos QR utilizados en nuestro sistema, asegurando así la eficiencia y precisión en la obtención de la información asociada a dichos códigos. La aplicación la podrás encontrar [aquí](https://github.com/carlosantonio98/samasy-app-flutter).
 
 ## Pre-requisitos 📋
+
 Para la correcta ejecución de este proyecto, necesitas tener las siguientes tecnologías instaladas en tu ordenador.
 * Php ^8.0.2
 * Composer 2.4.1
@@ -13,11 +14,12 @@ Para la correcta ejecución de este proyecto, necesitas tener las siguientes tec
 * MariaDB 10.4.24
 * Npm 8.19.1
 * Yarn 1.22.19
+
 ## Instalación 🔧
 
 1. Clona este proyecto.
 ```bash
-git clone https://github.com/carlosantonio98/Samasy-Laravel.git
+git clone https://github.com/carlosantonio98/samasy-laravel.git
 ```
 
 2. Instala las dependencias de php con composer.
@@ -120,17 +122,19 @@ php artisan serve
 ```
 
 # Usuarios de prueba🗝️
+
 1. Administrador
-    Correo: admin@admin.com
-    Contraseña: Manzana13.
+    - Correo: admin@admin.com
+    - Contraseña: Manzana13.
 2. Vendedor 1
-    Correo: sellerone@sellerone.com
-    Contraseña: Manzana13.
+    - Correo: sellerone@sellerone.com
+    - Contraseña: Manzana13.
 3. Vendedor 2
-    Correo: sellertwo@sellertwo.com
-    Contraseña: Manzana13.
+    - Correo: sellertwo@sellertwo.com
+    - Contraseña: Manzana13.
 
 ## Construido con 🛠️
+
 - [Laravel 9.19](https://laravel.com/docs/9.x)
 - [Composer 2.4.1](https://getcomposer.org/)
 - [Tailwind 3.1.0](https://tailwindcss.com/)
@@ -142,43 +146,57 @@ php artisan serve
 ## Preview 📸
 
 - Inicio de sesión
-![App Screenshot](https://i.imgur.com/BYFTIaq.jpg)
+
+    ![App Screenshot](https://i.imgur.com/BYFTIaq.jpg)
 
 - Pagina principal
-![App Screenshot](https://i.imgur.com/JptbEqf.jpg)
+    
+    ![App Screenshot](https://i.imgur.com/JptbEqf.jpg)
 
 - Catálogo de tipos
-![App Screenshot](https://i.imgur.com/aRu8M3C.jpg)
+    
+    ![App Screenshot](https://i.imgur.com/aRu8M3C.jpg)
 
 - Catálogo de sabores
-![App Screenshot](https://i.imgur.com/Fi5tfn5.jpg)
+    
+    ![App Screenshot](https://i.imgur.com/Fi5tfn5.jpg)
 
 - Catálogo de productos
-![App Screenshot](https://i.imgur.com/wEoLk38.jpg)
+    
+    ![App Screenshot](https://i.imgur.com/wEoLk38.jpg)
 
 - Catálogo de gastos
-![App Screenshot](https://i.imgur.com/H0whY1e.jpg)
+    
+    ![App Screenshot](https://i.imgur.com/H0whY1e.jpg)
 
 - Catálogo de ventas
-![App Screenshot](https://i.imgur.com/w3IkNqv.jpg)
+
+    ![App Screenshot](https://i.imgur.com/w3IkNqv.jpg)
 
 - Catálogo de existencias
-![App Screenshot](https://i.imgur.com/pVoxmAO.jpg)
+
+    ![App Screenshot](https://i.imgur.com/pVoxmAO.jpg)
 
 - Catálogo de usuarios
-![App Screenshot](https://i.imgur.com/QbLj6AJ.jpg)
+
+    ![App Screenshot](https://i.imgur.com/QbLj6AJ.jpg)
 
 - Catálogo de roles
-![App Screenshot](https://i.imgur.com/gml8hCq.jpg)
+
+    ![App Screenshot](https://i.imgur.com/gml8hCq.jpg)
 
 - Catálogo de permisos
-![App Screenshot](https://i.imgur.com/awAWtWT.jpg)
+
+    ![App Screenshot](https://i.imgur.com/awAWtWT.jpg)
 
 - Pagina de perfil
-![App Screenshot](https://i.imgur.com/K8iBskT.jpg)
+
+    ![App Screenshot](https://i.imgur.com/K8iBskT.jpg)
 
 - Pagina principal del vendedor
-![App Screenshot](https://i.imgur.com/ctledK9.jpg)
+
+    ![App Screenshot](https://i.imgur.com/ctledK9.jpg)
+
 ## Autor 🖋️
 
 - [@carlosantonio98](https://github.com/carlosantonio98)
